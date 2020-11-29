@@ -1,0 +1,16 @@
+{
+  "name": "support-cover",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "keywords": [],
+  "description": "",
+  "dependencies": {
+    "apex-publish-static-files": "^2.0.3",
+    "react-environment-setup": "^1.0.15"
+  }
+}

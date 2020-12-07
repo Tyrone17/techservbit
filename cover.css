@@ -41,7 +41,7 @@ p {
  }
 
 .icon-bar a {
-  display: inherit;
+  display: relative;
   position: fixed;
   height; 100%;
   text-align: center;

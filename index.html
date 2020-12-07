@@ -116,7 +116,23 @@
   		<p>Whether you need to develop or maintain your IT infrastructure, we at TechServ BIT can empower your business to adapt to the new industrial revolution, or simply to help you with compliance where King IV IT governance matters are concerned.</p>
 		<a href="merchandise.html" class="btn btn-lg btn-default">Learn more</a>
 		</div>
+<script>
+var acc = document.getElementsByClassName("accordion");
+var i;
 
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+  });
+}
+</script>	
+	
         <div class="mastfoot">
           <div class="inner">
               <img src="img/TS Header.jpg" position ="relative"/>

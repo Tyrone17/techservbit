@@ -62,43 +62,73 @@
           </ul><br>
       </div>
 
-      <form id="contact-form" method="post" name="contact-form" role="form" class="container">
+      <form id="contact-form" method="post" name="contact-form" autocomplete="on" role="form" class="cover-container">
         <div class="row">
-            <div class="col-md-6">
+            <div class="row-cols-md-3">
                 <label for="firstname">Name <span class="blue">*</span></label>
-                <input required id = type="text" name="fname" class="form-control" placeholder="Enter your firstname" id="fname" value="">
+                <input required type="text" name="fname" class="form-control" placeholder="Enter your first name" id="fname" value="">
                 <p class="comments">  </p>
             </div>
 
-            <div class="col-md-6">
-                <label for="lastname">Surname <span class="blue">*</span></label>
-                <input required type="text" name="lname" class="form-control" placeholder="Your Lastname" id="lname" value=" ">
+            <div class="row-cols-md-3">
+                <label for="lastname">Surname <span class="blue"></span></label>
+                <input required type="text" name="lname" class="form-control" placeholder="Enter your last name" id="lname" value="">
                 <p class="comments"> </p>
             </div>
 
-            <div class="col-md-6">
+            <div class="row-cols-md-12">
                 <label for="email">Email <span class="blue">*</span></label>
-                <input required type="email" name="email" class="form-control" placeholder="enter email" id="email" value=" ">
+                <input required  type="email" name="email" class="form-control" placeholder="Enter your email" id="email" value=" ">
                 <p class="comments"> </p>
             </div>
 
-            <div class="col-md-6">
-                <label for="phone">Telephone<span class="blue">*</span></label>
-                <input required type="tel" name="phone" class="form-control" placeholder="enter telephone" id="phone" value=" ">
-                <p class="comments"> </p>
+            <div class="row-cols-md-12">
+                <label for="phone">Mobile number<span class="blue">*</span></label>
+                <input required type="tel" name="phone" class="form-control" placeholder="Enter your mobile number" id="phone" value="">
+                <br>
+                <p class="comments">Do you use this number for WhatsApp and/or Telegram as well? </p>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="wahtsapp" id="whatsapp" value="whatsapp">
+                  <label class="form-check-label" for="IM check">WhatsApp</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="telegram" id="telegram" value="telegram">
+                  <label class="form-check-label" for="IM check">Telegram</label>
+                  <br>
+                </div>
+            </div>
+            
+             <div class="row-cols-md-12">
+              <br>
+                <label for="Ticket Type">Ticket Type<span class="blue">*</span></label>
+                <div class="form-group">
+                  <select class="form-control" id="ticketType" name="ticketType" placeholder="Choose your ticket type" onchange="setSerial()">
+                    <option value="androidRelated">Android related</option>
+                    <option value="mircosoftRelated">Azure/Office related</option>
+                    <option value="desktopRelated">Desktop related</option>
+                    <option value="googleRelated">Google related</option>
+                    <option value="laptopRelated">Laptop related</option>
+                    <option value="generalIT">Other topic not specificed</option>
+                  </select>
+                </div>
+                <p class="comments">Please try to select an option that <em>best describes</em> your reason for logging this ticket </p>
             </div>
 
-            <div class="col-md-12">
+            <div class="row-cols-md-12">
                 <label for="message">Support query<span class="blue">*</span></label>
-                <textarea required name="message" id="message" class="form-control" placeholder="write message" rows="4"> </textarea>
+                <textarea required  type="text" name="message" class="form-control" placeholder="Enter your message" id="message" value=" "></textarea>
                 <p class="comments">  </p>
             </div>
+            <div style="form-group">
+              <input  type="text" name="check" class="form-control" id="check" value="">
+            </div>
+            
 
-            <div class="col-md-12">
+            <div class="row-cols-md-12">
                 <p><strong style ="color: #d82c2e;"> * This information is required!</strong> </p>
             </div>
-            <div class="col-md-12">
-                <input style ="background-color: rgba(55, 226, 21, 0.959);" type="submit" class="btn btn-lg btn-default" value="submit">
+            <div class="row-cols-md-12">
+                <input style ="background-color: rgba(55, 226, 21, 0.959);" type="submit" class="btn btn-lg btn-default" value="Send service request">
                 <!--<a href="#" class="btn btn-lg btn-default">Learn more</a>-->
                 <!--We need to add to the php 'Thank you message' an if statement. To continue back to home or to login in and view ticket-->
             <script> 
@@ -111,6 +141,15 @@
                 .then(response => alert("Thanks for Contacting us..! We Will Contact You Soon..."))
                 .catch(error => console.error('Error!', error.message))
             })
+           
+           
+
+            function setSerial() {
+              let serial = 0
+              serial = "TSB_" + toString(serial++);
+              JSON.stringify(serial);
+                document.getElementById('check').value = serial;
+            }
           </script>
           <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
           <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -135,6 +174,7 @@
       <script src="../../dist/js/bootstrap.min.js"></script>
       <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
       <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+      <script src="js/script.js"></script>
     </body>            
 
 </html>

@@ -1,0 +1,54 @@
+{
+    "certificate": "Bookkeeping and Accountancy",
+    "checklist": [
+      {
+        "component": "Basic Accounting Principles",
+        "items": [
+          "Understand the accounting equation (Assets = Liabilities + Equity)",
+          "Know the double-entry bookkeeping system",
+          "Familiarity with the accounting cycle"
+        ]
+      },
+      {
+        "component": "Financial Statements",
+        "items": [
+          "Prepare income statements",
+          "Prepare balance sheets",
+          "Prepare cash flow statements"
+        ]
+      },
+      {
+        "component": "Record Keeping",
+        "items": [
+          "Maintain accurate ledgers",
+          "Record transactions in journals",
+          "Understand the use of source documents"
+        ]
+      },
+      {
+        "component": "Management Accounting",
+        "items": [
+          "Understand budgeting and forecasting",
+          "Know cost analysis techniques",
+          "Analyze financial performance"
+        ]
+      },
+      {
+        "component": "Taxation",
+        "items": [
+          "Understand basic tax principles",
+          "Prepare tax returns",
+          "Know tax compliance requirements"
+        ]
+      },
+      {
+        "component": "Ethics and Professional Standards",
+        "items": [
+          "Understand ethical responsibilities in accounting",
+          "Familiarity with professional accounting standards",
+          "Know the implications of fraud in accounting"
+        ]
+      }
+    ]
+  } 
+  

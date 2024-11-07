@@ -5,12 +5,27 @@ import bodyParser from "body-parser";
 import { mongoose } from "mongoose";
 
 const app = express();
-const port = 7000;
+const port = 1700;
 mongoose.set("strictQuery", false);
 
 // Configure Express middleware
+// Does not set content types for contents if not set explicitly already
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: false }));
+// TODO: main.js in public folder not loading 
+//  Done: explicitly set the Content-Type header
+app.get('/public/main.js', (req, res) => {
+  res.setHeader('Content-Type', 'application/javascript');
+  res.sendFile(__dirname + '/public/main.js');
+});
+
+// TODO: techservit_about.json in public folder not loading 
+//  Done: explicitly set the Content-Type header
+app.get('/data/techservit_about.json', (req, res) => {
+  res.setHeader('Content-Type', 'application/json');
+  res.sendFile(__dirname + '/data/techservit_about.json');
+});
+
 
 // Define paths to view files
 const __dirname = dirname(fileURLToPath(import.meta.url));

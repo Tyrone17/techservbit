@@ -4,13 +4,14 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Home</title>
+    <title>techservit - home</title>
     <link rel="stylesheet" href="/style.css" />
     
 </head>
 
 <body>
     <%- include('../public/partials/header.ejs') %>
+    <div class="container">
         <!-- <% if (blogList.length < 1) { %>
             <h1 class="no-blog-title">
                 You don't have any blogs yet. Please visit <br />the home page to create a
@@ -53,11 +54,12 @@
                         </div>
                     </div> -->
                     <% if (posts != null) { %>
-                        <div class="overflow-div">
-                            <div class="home-container">
-                                <h1 class="title">
-                                    techtab posts
-                                </h1>
+                        <div class="">
+                            <h1 class="title">
+                                techtab posts
+                            </h1>
+                            <div class="form-container" id="viewBackGround">
+                                <!-- TODO: Make the background colour white of this element loads -->
                                 <% for( let index=0; index < posts.length; index++ ) { %>
                                     <div class="blog-card">
                                         <span class="blog-number">
@@ -76,11 +78,15 @@
                                         <h5>
                                             <%= posts[index].timestamp%>
                                         </h5>
+                                        <!-- TODO: Add element for the author -->
+                                        <h5>
+                                            <%= posts[index].author%>
+                                        </h5>
                                     </div>
                                 <% } %>
                             </div>
                         </div>    
-                
+                        <%- include('../public/partials/footer.ejs') %>
                     <% } else {%>
                             <h1 class="title">techtab posts</h1>
                             <div class="overflow-div">
@@ -119,10 +125,11 @@
                                     <% } %> -->
                                 </div>
                             </div>
+                            <%- include('../public/partials/footer.ejs') %>
                         <% } %> 
 
-
-    <%- include('../public/partials/footer.ejs') %>
+    </div>
+    
     <script src="/main.js" type="text/javascript">
        
     </script>

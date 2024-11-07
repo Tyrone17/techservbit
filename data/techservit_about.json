@@ -1,0 +1,26 @@
+{
+    "about": {
+        "company_name": "techservit.co.za",
+        "established": "2020",
+        "business_structure": "incorporated private company",
+        "industry": "information technology",
+        "services": [
+            "IT consulting",
+            "software development",
+            "domain hosting",
+            "domain management",
+            "cloud services",
+            "cybersecurity solutions",
+            "technical support"
+        ],
+        "mission": "to deliver high-quality IT solutions that empower businesses to operate more efficiently and securely in the digital landscape.",
+        "vision": "of being a leading provider of professional IT services in South Africa, helping companies navigate and thrive in a tech-driven world.",
+        "values": [
+            " excellence in service",
+            " transparency",
+            " adaptability",
+            " client-focused solutions",
+            " and commitment to continuous learning"
+        ]
+    }
+}

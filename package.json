@@ -8,13 +8,12 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Tyrone Thabo Maasdorp-Mazibuko <techserv20@gmail.com> (http://techservit.co.za/)",
+  "license": "BSD-3-Clause",
   "dependencies": {
     "body-parser": "^1.20.2",
     "ejs": "^3.1.9",
     "express": "^4.18.2",
-    "mongodb": "^6.10.0",
     "mongoose": "^8.7.3"
   }
 }

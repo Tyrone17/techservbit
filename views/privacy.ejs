@@ -1,0 +1,82 @@
+<!-- views/policies.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>techservit -<%= privacyPolicy.title%></title>
+    <link rel="stylesheet" href="/style.css" />
+    
+</head>
+
+
+<body class="body-container">
+    <%- include('../public/partials/header.ejs') %>
+    <div class="form-container">
+        <h1><%= privacyPolicy.title %></h1>
+        <h4>Version: <%= privacyPolicy.version%></h4>
+        <h4>Effective date: <%= privacyPolicy.effectiveDate%></h4>
+        <p><strong>Introduction:</strong> <%= privacyPolicy.introduction %></p>
+
+        <section>
+            <h2>Information We Collect</h2>
+            <h3>Personal Information:</h3>
+            <ul>
+                <% privacyPolicy.informationWeCollect.personalInformation.forEach(function(info) { %>
+                    <li><%= info %></li>
+                <% }); %>
+            </ul>
+            <h3>Non-Personal Information:</h3>
+            <ul>
+                <% privacyPolicy.informationWeCollect.nonPersonalInformation.forEach(function(info) { %>
+                    <li><%= info %></li>
+                <% }); %>
+            </ul>
+        </section>
+
+        <section>
+            <h2>How We Use Information</h2>
+            <ul>
+                <% privacyPolicy.howWeUseInformation.forEach(function(usage) { %>
+                    <li><%= usage %></li>
+                <% }); %>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Data Sharing and Disclosure</h2>
+            <ul>
+                <% privacyPolicy.dataSharingAndDisclosure.forEach(function(disclosure) { %>
+                    <li><%= disclosure %></li>
+                <% }); %>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Data Security</h2>
+            <p><%= privacyPolicy.dataSecurity %></p>
+        </section>
+
+        <section>
+            <h2>Your Rights</h2>
+            <ul>
+                <li><strong>Access:</strong> <%= privacyPolicy.yourRights.access %></li>
+                <li><strong>Correction:</strong> <%= privacyPolicy.yourRights.correction %></li>
+                <li><strong>Deletion:</strong> <%= privacyPolicy.yourRights.deletion %></li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Updates to Policy</h2>
+            <p><%= privacyPolicy.updatesToPolicy %></p>
+        </section>
+
+        <section>
+            <h2>Contact Information</h2>
+            <p><%= privacyPolicy.contactInformation %></p>
+        </section>
+    </div>
+    <%- include('../public/partials/footer.ejs') %>
+</body>
+</html>

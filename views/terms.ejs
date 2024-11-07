@@ -1,0 +1,76 @@
+<!-- views/terms.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>techservit -<%= termsOfUse.title%></title>
+    <link rel="stylesheet" href="/style.css" />
+    
+</head>
+
+<body class="body-container">
+    <%- include('../public/partials/header.ejs') %>
+    <div class="form-container">
+        <h1><%= termsOfUse.title %></h1>
+        <h4>Version: <%= termsOfUse.version%></h4>
+        <h4>Effective date: <%= termsOfUse.effectiveDate%></h4>
+        <p><strong>Introduction:</strong> <%= termsOfUse.introduction %></p>
+
+        <section>
+            <h2>Acceptance of terms of use</h2>
+            <h3>Acceptance of terms:</h3>
+            <p>
+                <%= termsOfUse.acceptanceOfTerms %>
+            </p>
+            <h3>Non-Personal Information:</h3>
+            <p>
+                <%= termsOfUse.useOfWebsite %>
+            </p>
+        </section>
+
+        <section>
+            <h2>Intellectual Property</h2>
+            <p>
+                <%= termsOfUse.intellectualProperty %>
+            </p>
+        </section>
+
+        <section>
+            <h2>User Accounts</h2>
+            <h3>Account registration</h3>
+            <p>
+                <%= termsOfUse.userAccounts.registration %>
+            </p>
+            <h3>Account responsibility</h3>
+            <p>
+                <%= termsOfUse.userAccounts.responsibility %>
+            </p>
+        </section>
+        
+        <section>
+            <h2>Disclaimer of warranties</h2>
+            <p><%= termsOfUse.disclaimerOfWarranties %></p>
+        </section>
+
+        <section>
+            <h2>Limitation of liability</h2>
+            <p><%= termsOfUse.limitationOfLiability %></p>
+        </section>
+        
+        <section>
+            <h2>Modification to terms</h2>
+            <p>
+                <%= termsOfUse.modificationsToTerms %>
+            </p>
+        </section>
+
+        <section>
+            <h2>Contact information</h2>
+            <p><%= termsOfUse.contactInformation %></p>
+        </section>
+    </div>
+    <%- include('../public/partials/footer.ejs') %>
+</body>
+</html>

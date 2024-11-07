@@ -3,10 +3,14 @@ import { dirname, join } from "path";
 import { fileURLToPath } from "url";
 import bodyParser from "body-parser";
 import { mongoose } from "mongoose";
+import fetch from 'node-fetch';
 
 const app = express();
 const port = 1700;
 mongoose.set("strictQuery", false);
+
+// Set the view engine to EJS
+app.set('view engine', 'ejs');
 
 // Configure Express middleware
 // Does not set content types for contents if not set explicitly already
@@ -26,12 +30,18 @@ app.get('/data/techservit_about.json', (req, res) => {
   res.sendFile(__dirname + '/data/techservit_about.json');
 });
 
+app.get('/data/privacy_tos.json', (req, res) => {
+  res.setHeader('Content-Type', 'application/json');
+  res.sendFile(__dirname + '/data/privacy_tos.json');
+});
 
 // Define paths to view files
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const indexPath = join(__dirname, "index.ejs");
 const homePath = join(__dirname, "views/home.ejs");
 const blogDetailsPath = join(__dirname, "views/blogDetails.ejs");
+const privacy = join(__dirname, "views/privacy.ejs");
+const terms = join(__dirname, "views/terms.ejs")
 
 // Initialize blog list
 let blogList = [];
@@ -78,6 +88,38 @@ app.get("/home", (req, res) => {
   .catch(error => {
     console.log('Error fetching MongoDB collection:', error);
   });
+});
+
+// Render policies page
+app.get('/privacy', async (req, res) => {
+  // var privacyPolicy = {};
+  try {
+    const response = await fetch('http://127.0.0.1:1700/data/privacy_tos.json');
+    const policies = await response.json(); // Correctly declared as `const`
+    
+    res.render(privacy, {
+      privacyPolicy: policies.privacyPolicy,
+    });
+  } catch (err) {
+    console.error('Error fetching policies JSON:', err);
+    res.status(500).send('Server Error');
+  }
+});
+
+// Render terms page
+app.get('/terms', async (req, res) => {
+  // var privacyPolicy = {};
+  try {
+    const response = await fetch('http://127.0.0.1:1700/data/privacy_tos.json');
+    const policies = await response.json(); // Correctly declared as `const`
+    
+    res.render(terms, {
+      termsOfUse: policies.termsOfUse
+    });
+  } catch (err) {
+    console.error('Error fetching policies JSON:', err);
+    res.status(500).send('Server Error');
+  }
 });
 
 // Add new blog

@@ -1,0 +1,61 @@
+{
+    "privacyPolicy": {
+      "title": "Privacy Policy",
+      "version":"1.0.2",
+      "effectiveDate":"04 November 2024",
+      "introduction": "At TechServIT, we respect your privacy and are committed to protecting your personal information. This Privacy Policy outlines how we collect, use, and safeguard your data.",
+      "informationWeCollect": {
+        "personalInformation": [
+          "Name",
+          "Email address",
+          "Phone number",
+          "Billing information"
+        ],
+        "nonPersonalInformation": [
+          "IP address",
+          "Browser type",
+          "Pages visited",
+          "Time spent on the website"
+        ]
+      },
+      "howWeUseInformation": [
+        "To provide, maintain, and improve our services",
+        "To communicate with you, including responding to inquiries",
+        "To process transactions",
+        "To send promotional materials or offers (with your consent)"
+      ],
+      "dataSharingAndDisclosure": [
+        "We do not sell or share your personal information with third parties, except as required by law or with your consent.",
+        "We may share your data with trusted service providers to assist in operations such as payment processing and data analytics."
+      ],
+      "dataSecurity": "We implement reasonable security measures to protect your data from unauthorized access or disclosure.",
+      "yourRights": {
+        "access": "You have the right to request access to your personal information.",
+        "correction": "You can request corrections to any inaccuracies.",
+        "deletion": "You may request the deletion of your data, subject to legal obligations."
+      },
+      "updatesToPolicy": "We may update this Privacy Policy from time to time. Please review it periodically.",
+      "contactInformation": "For any questions or concerns regarding this Privacy Policy, please contact us at techserv20@gmail.com."
+    },
+    "termsOfUse": {
+      "title": "Terms of Use",
+      "version":"1.0.1",
+      "effectiveDate":"04 November 2024",
+      "introduction": "These Terms of Use (\"Terms\") govern your access and use of the TechServIT website and services.",
+      "acceptanceOfTerms": "By accessing or using our website, you agree to comply with these Terms. If you do not agree, please refrain from using the website.",
+      "useOfWebsite": [
+        "You agree to use the website for lawful purposes only.",
+        "You will not engage in any activity that disrupts or interferes with the website's functionality."
+      ],
+      "intellectualProperty": "All content, trademarks, and logos are owned by TechServIT or its licensors. Unauthorized use is prohibited.",
+      "userAccounts": {
+        "registration": "You may need to create an account to access certain features.",
+        "responsibility": "You are responsible for maintaining the confidentiality of your account information."
+      },
+      "disclaimerOfWarranties": "Our website and services are provided \"as is\" without warranties of any kind. We do not guarantee uninterrupted or error-free services.",
+      "limitationOfLiability": "TechServIT shall not be liable for any indirect, incidental, or consequential damages resulting from the use or inability to use the website.",
+      "modificationsToTerms": "We may revise these Terms at any time. Continued use of the website following changes signifies your acceptance.",
+      "contactInformation": "For questions regarding these Terms, please contact us at techserv20@gmail.com."
+    }
+  }
+  

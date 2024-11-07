@@ -31,3 +31,8 @@ if (document.getElementById("aboutPage") != null) {
 } else {
     document.getElementById("aboutPage").style.backgroundColor = "#00bfff";
 }
+
+function openNewWindow(urlString) {
+    window.open(urlString)
+
+}

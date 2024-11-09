@@ -4,14 +4,14 @@ import { fileURLToPath } from "url";
 import bodyParser from "body-parser";
 import { mongoose } from "mongoose";
 import fetch from 'node-fetch';
+import { marked } from "marked";
 
 const app = express();
 const port = 1700;
-mongoose.set("strictQuery", false);
 
+mongoose.set("strictQuery", false);
 // Set the view engine to EJS
 app.set('view engine', 'ejs');
-
 // Configure Express middleware
 // Does not set content types for contents if not set explicitly already
 app.use(express.static("public"));
@@ -21,6 +21,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.get('/public/main.js', (req, res) => {
   res.setHeader('Content-Type', 'application/javascript');
   res.sendFile(__dirname + '/public/main.js');
+});
+
+app.get('/public/display.js', (req, res) => {
+  res.setHeader('Content-Type', 'application/javascript');
+  res.sendFile(__dirname + '/public/display.js');
 });
 
 // TODO: techservit_about.json in public folder not loading 
@@ -47,22 +52,31 @@ const terms = join(__dirname, "views/terms.ejs")
 let blogList = [];
 
 // Connect to Mongodb
-mongoose.connect("mongodb+srv://techserv20:6stJikPdLeKhVpUf@tsbit.eisfnnw.mongodb.net/blog").then(()=>{
+mongoose.connect("mongodb+srv://techserv20:6stJikPdLeKhVpUf@tsbit.eisfnnw.mongodb.net/article").then(()=>{
   console.log("MongoDB service running")
 }).catch((err)=>{
   console.log(err);
 });
 
 // Schema
+// const bPostsSchema = new mongoose.Schema({
+//   fid: String,
+//   title: String,
+//   description: String,
+//   timestamp: String
+// })
 const bPostsSchema = new mongoose.Schema({
-  fid: String,
-  title: String,
-  description: String,
-  timestamp: String
+  articleTitle: String,
+  articleContent: String,
+  author: String,
+  timestamp: String,
+  source: String,
+  dateCreated: String
 })
 
 // Schema model
-const bPostModel = mongoose.model("blogposts", bPostsSchema);
+// const bPostModel = mongoose.model("blogposts", bPostsSchema);
+const bPostModel = mongoose.model("articles", bPostsSchema);
 
 // Render index page
 app.get("/", (req, res) => {
@@ -177,10 +191,31 @@ app.post("/delete/:id", (req, res) => {
 app.get("/blogDetails/:id", (req, res) => {
   const blogId = req.params.id;
   const blogDetails = blogList.find((blog) => blog.id === parseInt(blogId));
-  res.render(blogDetailsPath, {
-    blogDetails: blogDetails,
-  });
+  bPostModel.find({})
+  .then(posts => {
+    // console.log('blogposts:', posts);
+    // const dbData = JSON.parse(posts)
+    
+    res.render(blogDetailsPath,{
+      blogDetails:blogDetails,
+      // checklist,
+      posts
+    });
+  })
 });
+
+// app.get('/blog/:id', (req, res) => {
+//   const blogId = req.params.id;
+//   // Assuming you fetch the blog post using the blogId
+//   Blog.findById(blogId, (err, blogDetails) => {
+//     if (err || !blogDetails) {
+//       return res.status(404).send("Blog not found");
+//     }
+//     res.render('blogDetails', { blogDetails });
+//   });
+// });
+
+
 
 // Render edit blog page
 app.get("/edit/:id", (req, res) => {

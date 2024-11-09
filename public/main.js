@@ -18,21 +18,22 @@ xhttp.onload = function() {
 xhttp.open("GET", "/data/techservit_about.json");
 xhttp.send();
 
-// Fixed the background of the "/home" route - must be white or offsite the gray on cards
-if (document.getElementById("viewBackGround") != null) {
-    document.getElementById("viewBackGround").style.backgroundColor = "#ffffff";
-} else {
-    document.getElementById("viewBackGround").style.backgroundColor = "#ffffff";
-}
+// // Fixed the background of the "/home" route - must be white or offsite the gray on cards
+// if (document.getElementById("viewBackGround") != null) {
+//     document.getElementById("viewBackGround").style.backgroundColor = "#ffffff";
+// } else {
+//     document.getElementById("viewBackGround").style.backgroundColor = "#ffffff";
+// }
 
-// Fixed the background of the "/home" route - must be white or offsite the gray on cards
-if (document.getElementById("aboutPage") != null) {
-    document.getElementById("aboutPage").style.backgroundColor = "#ffffff";
-} else {
-    document.getElementById("aboutPage").style.backgroundColor = "#00bfff";
-}
+// // Fixed the background of the "/home" route - must be white or offsite the gray on cards
+// if (document.getElementById("aboutPage") != null) {
+//     document.getElementById("aboutPage").style.backgroundColor = "#ffffff";
+// } else {
+//     document.getElementById("aboutPage").style.backgroundColor = "#00bfff";
+// }
 
 function openNewWindow(urlString) {
     window.open(urlString)
-
 }
+
+

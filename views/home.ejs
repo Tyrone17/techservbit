@@ -9,7 +9,7 @@
     
 </head>
 
-<body class="body-container">
+<body>
     <%- include('../public/partials/header.ejs') %>
     <div class="container">
         <!-- <% if (blogList.length < 1) { %>
@@ -54,7 +54,7 @@
                         </div>
                     </div> -->
                     <% if (posts != null) { %>
-                        <div class="">
+                        <!-- <div class=""> -->
                             <h1 class="title">
                                 techtab posts
                             </h1>
@@ -66,13 +66,13 @@
                                             <%= index+ 1 %>
                                         </span>
                                         <h4>
-                                            <%= posts[index].title %>
+                                            <%= posts[index].articleTitle %>
                                         </h4>
                                         <article>
-                                            <%= posts[index].description?.slice(0,300) %>
-                                                <% if (posts[index].description?.length> 299) { %> ...
+                                            <%= posts[index].articleContent?.slice(0,300) %>
+                                                <% if (posts[index].articleContent?.length> 299) { %> ...
                                                     <a class="view-btn" href="/blogDetails/<%= posts[index]._id %>">
-                                                        View Card</a>
+                                                        read more</a>
                                                     <% } %>
                                         </article>
                                         <h5>
@@ -85,8 +85,8 @@
                                     </div>
                                 <% } %>
                             </div>
-                        </div>    
-                        <%- include('../public/partials/footer.ejs') %>
+                        <!-- </div>     -->
+                       
                     <% } else {%>
                             <h1 class="title">techtab posts</h1>
                             <div class="overflow-div">
@@ -133,6 +133,7 @@
     <script src="/main.js" type="text/javascript">
        
     </script>
+    <%- include('../public/partials/footer.ejs') %>
 </body>
 
 </html>

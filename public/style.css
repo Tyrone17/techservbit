@@ -52,7 +52,7 @@ a {
   padding: 0.2em 1em;
   display: flex;
   justify-content: space-between;
-  position:relative;
+  position:sticky;
   bottom: 0;
   /* width: 100%; */
   z-index: 10;
@@ -120,7 +120,7 @@ input[type="submit"]:hover {
 }
 
 .form-container {
-  width: 700px;
+  /* width: 700px; */
   margin: 0 auto;
   border-radius: 8px;
   background-color: #f2f2f2;
@@ -214,7 +214,7 @@ input[type="submit"]:hover {
 
 /* Privacy */
 .body-container {
-  width: 100%;
+  /* width: 100%; */
   margin: 0 auto;
   /* border-radius: 4px; */
   background-color:aqua;
@@ -227,4 +227,6 @@ input[type="submit"]:hover {
   border-radius: 4px;
   background-color:whitesmoke;
   padding: 17px;
+  justify-content: space-between;
+  /* justify-content: space-between; */
 }

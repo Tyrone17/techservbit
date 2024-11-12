@@ -1,7 +1,7 @@
 {
     "privacyPolicy": {
       "title": "Privacy Policy",
-      "version":"1.0.2",
+      "version":"1.0.1",
       "effectiveDate":"04 November 2024",
       "introduction": "At TechServIT, we respect your privacy and are committed to protecting your personal information. This Privacy Policy outlines how we collect, use, and safeguard your data.",
       "informationWeCollect": {
@@ -35,7 +35,7 @@
         "deletion": "You may request the deletion of your data, subject to legal obligations."
       },
       "updatesToPolicy": "We may update this Privacy Policy from time to time. Please review it periodically.",
-      "contactInformation": "For any questions or concerns regarding this Privacy Policy, please contact us at techserv20@gmail.com."
+      "contactInformation": "For any questions or concerns regarding this Privacy Policy, please contact us at info@techserit.co.za."
     },
     "termsOfUse": {
       "title": "Terms of Use",
@@ -55,7 +55,7 @@
       "disclaimerOfWarranties": "Our website and services are provided \"as is\" without warranties of any kind. We do not guarantee uninterrupted or error-free services.",
       "limitationOfLiability": "TechServIT shall not be liable for any indirect, incidental, or consequential damages resulting from the use or inability to use the website.",
       "modificationsToTerms": "We may revise these Terms at any time. Continued use of the website following changes signifies your acceptance.",
-      "contactInformation": "For questions regarding these Terms, please contact us at techserv20@gmail.com."
+      "contactInformation": "For questions regarding these Terms, please contact us at info@techservit.co.za."
     }
   }
   

@@ -66,6 +66,9 @@ a {
   /* border-top: 1px solid #ccc; */
   justify-content: space-between;
   font-size: smaller;
+  position:-webkit-sticky;
+  padding: 1%;
+  bottom: 0;
 }
 
 /* input form */

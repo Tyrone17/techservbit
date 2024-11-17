@@ -57,18 +57,19 @@ a {
   /* width: 100%; */
   /* z-index: 10;
   background: #fff;
-  display: flex;
-  justify-content: center;
-  font-size: smaller; 
+  /* justify-content: center; */
   /* background-color: #F1F1F1; */
   background-color: #fff;
   text-align: center;
-  /* border-top: 1px solid #ccc; */
+  border-top: 1px solid #ccc;
   justify-content: space-between;
   font-size: smaller;
-  position:relative;
   padding: 1%;
+  top: auto;
   bottom: 0;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
 /* input form */

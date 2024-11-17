@@ -191,6 +191,7 @@ app.post("/delete/:id", (req, res) => {
 app.get("/blogDetails/:id", (req, res) => {
   const blogId = req.params.id;
   const blogDetails = blogList.find((blog) => blog.id === parseInt(blogId));
+  const currentUrl = req.originalUrl; 
   bPostModel.find({})
   .then(posts => {
     // console.log('blogposts:', posts);
@@ -199,7 +200,7 @@ app.get("/blogDetails/:id", (req, res) => {
     res.render(blogDetailsPath,{
       blogDetails:blogDetails,
       // checklist,
-      posts
+      posts, currentUrl
     });
   })
 });

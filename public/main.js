@@ -1,4 +1,5 @@
 console.log("main.js connected");
+console.log(document.location.href)
 
 // Create an AJAX object to load the about .json and display the contents
 const xhttp = new XMLHttpRequest();

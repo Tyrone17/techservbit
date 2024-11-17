@@ -1,4 +1,5 @@
 console.log("display.js for blogDetails");
+console.log(document.location.href.slice(document.location.href.length-24,document.location.href.length))
 // Fetch the content (read as marked down text)
 const mdt = document.getElementById('aContent').textContent;
 // const markdownText = "# Hello, World!\nThis is **bold** text.";

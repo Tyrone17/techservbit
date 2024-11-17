@@ -8,7 +8,7 @@
     <script type="module" src="https://cdn.jsdelivr.net/npm/marked/marked.min.js">
     </script>
   </head>
-  <body>
+  <body class="body-container" >
     <%- include('../public/partials/header.ejs') %>
     <div class="container">
       <div class="viewBlog-header">
@@ -21,12 +21,18 @@
         <% } else if( posts ) {%>
         <!-- <p>Posts work</p> -->
         <!-- <p><%= posts%></p> -->
-        <h2><%= posts[0].articleTitle%></h2>
-        <h4>written by: <%= posts[0].author%></h4>
-        <h5>written on: <%= posts[0].dateCreated%></h5>
-        <p id="aContent"><%= posts[0].articleContent%></p>
-        <h6>source: <%= posts[0].source %></h6>
-        <p  id="bContent"></p>
+        <% for( let index=0; index < posts.length; index++ ) { %>
+          <% if (posts[index]._id.toString() == currentUrl.slice(currentUrl.length-24,currentUrl.length)) { %>
+            <h2><%= posts[index].articleTitle%></h2>
+            <h4>written by: <%= posts[index].author%></h4>
+            <h5>written on: <%= posts[index].dateCreated%></h5>
+            <p id="aContent"><%= posts[index].articleContent%></p>
+            <h6>source: <%= posts[index].source %></h6>
+            <p  id="bContent"></p>
+            
+            <%}%>
+            <%}%>
+            <p>Debug: Current URL is <%= currentUrl %></p>
         <%  } else {%>
         <p>Nope</p>
         <%}%>

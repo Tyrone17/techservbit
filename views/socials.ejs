@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>techservit - socials</title>
+    <link rel="stylesheet" href="/style.css" />
+    
+</head>
+
+<body class="body-container">
+    <%- include('../public/partials/header.ejs') %>
+    <div class="form-container"> 
+        <main class="container">
+            <!-- BlueSky Feed  -->
+            <section class="contact-info">
+              <h3>BlueSky Feed</h3>
+              <% if (feed && feed.length) { %>
+                <ul>
+                  <% feed.forEach((item, index) => { %>
+                    <li class="feed-li">
+                      <h3 class="feed-h3">Follow us on <em>BlueSky </em><a href="<%= 'https://bsky.app/profile/'+item.post.author.handle %>"> @<%= item.post.author.handle %></a></h3>
+                      <p class="feed-p"><%= item.post.record.text %></p>
+                    </li>
+                    <p>for more posts like this - served daily.</p>
+                  <% }); %>
+                </ul>
+              <% } else { %>
+                <p>No feed items available.</p>
+              <% } %>
+            </section>
+            <section class="contact-info">
+                <h3>Contact Information</h3>
+                <ul>
+                  <li><strong>Email:</strong> <a href="mailto:info@techservit.co.za">info@techservit.co.za</a></li>
+                  <!-- <li><strong>Website:</strong> <a href="http://www.techservit.co.za" target="_blank">www.techservit.co.za</a></li> -->
+                  <li><strong>Ticket Service:</strong></li>
+                  <form action="/contact" method="get">
+                    <button  type="submit">Log a Request</button>
+                  </form>
+                </ul>
+              </section>
+        </main>
+    </div>
+    
+    <script src="/main.js" type="text/javascript">
+       
+    </script>
+    <%- include('../public/partials/footer.ejs') %>
+</body>
+
+</html>

@@ -47,7 +47,17 @@ a {
   margin: 1.4em 1em 1em 1em;
 }
 
-.site-footer {
+  /* Footer */
+  .site-footer {
+    text-align: center;
+    padding: 1rem;
+    /* background: var(--grey); */
+    background: #fff;
+    color: black;
+    margin-top: 2rem;
+  }
+  
+/* .site-footer {
   /* border-top: 1px solid #ccc;
   padding: 0.2em 1em;
   display: flex;
@@ -59,7 +69,7 @@ a {
   background: #fff;
   /* justify-content: center; */
   /* background-color: #F1F1F1; */
-  background-color: #fff;
+  /* background-color: #fff;
   text-align: center;
   border-top: 1px solid #ccc;
   justify-content: space-between;
@@ -70,7 +80,7 @@ a {
   display: flex;
   flex-direction: column;
   flex: 1;
-}
+} */
 
 /* input form */
 .title {
@@ -242,4 +252,96 @@ input[type="submit"]:hover {
   padding: 17px;
   justify-content: space-between;
   /* justify-content: space-between; */
+}
+
+/* contact info section for Socials page */
+.contact-info ul {
+  list-style: none;
+}
+
+.contact-info ul li {
+  margin-bottom: 0.5rem;
+}
+
+.contact-info a {
+  color: var(--gold);
+  text-decoration: none;
+}
+
+.contact-info a:hover {
+  text-decoration: underline;
+}
+
+/* X.com feed styles */
+.x-feed {
+  margin: 2rem auto;
+  max-width: 600px;
+  text-align: center;
+}
+
+.x-feed h2 {
+  color: var(--grey);
+  margin-bottom: 1rem;
+  font-size: 1.8rem;
+}
+
+.twitter-timeline {
+  border: 1px solid var(--gold);
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.tweet-list {
+  list-style: none;
+  padding: 0;
+}
+
+.tweet {
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background: #f9f9f9;
+  border-left: 4px solid var(--gold);
+  border-radius: 5px;
+}
+
+.tweet small {
+  display: block;
+  margin-top: 0.5rem;
+  color: #666;
+}
+
+/* Styles for Feed */
+.feed-li {
+  margin: 15px 0;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fff;
+}
+
+.feed-h3 {
+  margin: 0;
+  color: #0077cc;
+}
+
+.feed-p {
+  margin: 5px 0 0;
+  color: #555;
+}
+
+/* Styles for Index What We Do section */
+.index-li {
+  margin: 15px 0;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fff;
+  color: black;
+  font-weight: 600;
+}
+
+.index-p {
+  margin: 5px 0 0;
+  color: #1876be;
+  font-weight: 500;
 }

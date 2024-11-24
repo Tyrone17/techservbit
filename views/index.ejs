@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BlueSky Feed</title>
+</head>
+<body>
+  <h1>Your BlueSky Feed</h1>
+  <% if (feed && feed.length) { %>
+    <ul>
+      <% feed.forEach((item, index) => { %>
+        <li>
+          <h3><%= item.post.author.handle %></h3>
+          <p><%= item.post.record.text %></p>
+        </li>
+      <% }); %>
+    </ul>
+  <% } else { %>
+    <p>No feed items available.</p>
+  <% } %>
+</body>
+</html>

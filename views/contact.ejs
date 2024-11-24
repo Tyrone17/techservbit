@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us</title>
+</head>
+<body>
+  <h1>Contact Us</h1>
+  <form action="/send-email" method="POST">
+    <label for="name">Your Name and Surname:</label>
+    <input type="text" name="name" id="name" required>
+    <br>
+    <label for="email">Your Email:</label>
+    <input type="email" name="email" id="email" required>
+    <br>
+    <label for="number">Your WhatsApp/Telegram:</label>
+    <input type="number" name="number" id="number" required>
+    <br>
+    <label for="message">Your Request/Query:</label>
+    <textarea name="message" id="message" required></textarea>
+    <br>
+    <button type="submit">Send</button>
+  </form>
+</body>
+</html>

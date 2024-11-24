@@ -4,10 +4,16 @@ import { fileURLToPath } from "url";
 import bodyParser from "body-parser";
 import { mongoose } from "mongoose";
 import fetch from 'node-fetch';
-import { marked } from "marked";
+import nodemailer from "nodemailer";
+import axios from 'axios';
+import dotenv from 'dotenv';
+// import {TwitterApi, TwitterApiv2} from "twitter-api-v2";
+// import { marked } from "marked";
 
 const app = express();
 const port = 1700;
+const BASE_URL = 'https://bsky.social/xrpc';
+dotenv.config();
 
 mongoose.set("strictQuery", false);
 // Set the view engine to EJS
@@ -26,6 +32,11 @@ app.get('/public/main.js', (req, res) => {
 app.get('/public/display.js', (req, res) => {
   res.setHeader('Content-Type', 'application/javascript');
   res.sendFile(__dirname + '/public/display.js');
+});
+
+app.get('/public/jojo.png', (req, res) => {
+  // res.setHeader('Content-Type', 'application/javascript');
+  res.sendFile(__dirname + '/public/jojo.png');
 });
 
 // TODO: techservit_about.json in public folder not loading 
@@ -47,11 +58,53 @@ const homePath = join(__dirname, "views/home.ejs");
 const blogDetailsPath = join(__dirname, "views/blogDetails.ejs");
 const privacy = join(__dirname, "views/privacy.ejs");
 const terms = join(__dirname, "views/terms.ejs")
+const socials = join(__dirname, "views/socials.ejs")
+const contact = join(__dirname, "views/contact.ejs")
 
 // Initialize blog list
 let blogList = [];
 
-// Connect to Mongodb
+// Twitter API client
+// const twitterClient = new TwitterApi({
+//   // nuCbs2y7hRrnbEU0IR75RiObA
+//   appKey: 'nuCbs2y7hRrnbEU0IR75RiObA',
+//   // eyXYUNEPQ8acUcj7aOR2i4zCua8wcc8KNZ4uE2Qdn6ew8G8Kwr
+//   appSecret: 'eyXYUNEPQ8acUcj7aOR2i4zCua8wcc8KNZ4uE2Qdn6ew8G8Kwr',
+//   // 249515150-slBRB5QnlxUTNwpkdg39CUkWkA3y7oYMVbajggZO
+//   accessToken: '249515150-slBRB5QnlxUTNwpkdg39CUkWkA3y7oYMVbajggZO',
+//   // nyLnAcNsy14BOPMrxmS9Ns0eEhH7hmOTFVo4gSffeRZmz
+//   accessSecret: 'nyLnAcNsy14BOPMrxmS9Ns0eEhH7hmOTFVo4gSffeRZmz',
+// });
+
+// const client = new TwitterApi('AAAAAAAAAAAAAAAAAAAAAHRuxAEAAAAAKL3ljI8SDQ1GzzTJxO6Vg2PTVsc%3D6xzAy2syypN568xfzJ06Fr7TBuGTQ72zxcv1bnyU7RuNlY54ZX');
+
+// async function getUserId(username) {
+//   try {
+//     const user = await client.v2.userByUsername(username);
+//     return user.data.id; // This is the numeric user ID
+//   } catch (error) {
+//     console.error('Error fetching user ID:', error);
+//   }
+// }
+
+// getUserId('Tyrone_Maasdorp').then((id) => console.log('User ID:', id));
+
+// async function fetchTweets() {
+//   try {
+//     const tweets = await client.v2.userTimeline('249515150', { max_results: 5 });
+//     console.log(tweets);
+//   } catch (error) {
+//     if (error.code === 429) {
+//       console.error(`Rate limit exceeded. Try again after: ${new Date(error.rateLimit.reset * 1000)}`);
+//     } else {
+//       console.error('Error fetching tweets:', error);
+//     }
+//   }
+// }
+// fetchTweets();
+
+
+// Connect to Mongodba instance
 mongoose.connect("mongodb+srv://techserv20:6stJikPdLeKhVpUf@tsbit.eisfnnw.mongodb.net/article").then(()=>{
   console.log("MongoDB service running")
 }).catch((err)=>{
@@ -81,6 +134,134 @@ const bPostModel = mongoose.model("articles", bPostsSchema);
 // Render index page
 app.get("/", (req, res) => {
   res.render(indexPath);
+});
+
+// Render contact page
+app.get("/contact", (req, res) => {
+  res.render(contact);
+});
+
+// Create route to handle the email object
+app.post('/send-email', async (req, res) => {
+  const { name, email, number, message } = req.body;
+  const uid = generateID();
+  try {
+    // Set up nodemailer transport with your email service
+    const transporter = nodemailer.createTransport({
+      service: 'gmail', // Example for Gmail
+      auth: {
+        user: 'techserv20@gmail.com', // Replace with your email
+        pass: 'ubyl xzsl gxdv wvxn'  // Use an App Password if using Gmail
+      }
+    });
+
+    // Set up email data
+    const mailOptions = {
+      from: email, // sender's email address (user's input) = techserv20@gmail.com
+      to: 'recipient_email@gmail.com', // recipient's email address = info@techservit.co.za (it creates the lead into new business)
+      subject: `New Customer Request - ${uid}`,
+      text: `You have received a new message:\n\nName: ${name}\nEmail: ${email}\nNumber: ${number}\nMessage: ${message}\nUID: ${uid}`
+    };
+
+    // Send the email
+    await transporter.sendMail(mailOptions);
+
+    // Send success response to the user
+    // res.send('Email sent successfully!');
+    res.send(
+      '<script>alert("Your query was sent to us successfully!"); window.location="/";</script>'
+    );
+    // res.redirect("/");
+  } catch (error) {
+    console.error('Error sending email:', error);
+    res.status(500).send('Error sending email. Please try again later.');
+  }
+});
+
+// Function to generate random ID
+function generateID() {
+  return Math.floor(Math.random() * 10000);
+}
+
+// Render socials page
+// app.get("/socials", (req, res) => {
+//   const test = "@Tyrone_Maasdorp";
+//   res.render(socials, test);
+// });
+app.get('/socials', async (req, res) => {
+  // const xHandle = '@Tyrone_Maasdorp'; // Your X handle
+  // res.render(socials, { xHandle });  // Pass as an object
+  // try {
+    // const tweets = await twitterClient.v2.userTimeline('@Tyrone_Maasdorp', {
+    //   max_results: 5, // Fetch the latest 5 tweets
+    // });
+    // res.render(socials, { tweets: tweets.data });
+    // res.render(socials, {xHandle:xHandle});
+  // } catch (err) {
+    // console.error(err);
+    // res.render(socials, { tweets: [] , xHandle, fetchTweets:fetchTweets()}); // Render without tweets on error
+    // res.render(socials, {xHandle:xHandle}); // Render without tweets on error
+  // }
+  // try {
+  //   const response = await axios.get('https://bsky.social/xrpc/app.bsky.feed.getAuthorFeed', {
+  //       headers: { Authorization: `Bearer YOUR_ACCESS_TOKEN` },
+  //       params: { actor: 'techservit' }
+  //   });
+
+  //   // Pass the feed data to the EJS template
+  //   res.render(socials, { posts: response.data.feed });
+  // } catch (error) {
+  //     console.error('Error fetching feed:', error);
+  //     res.status(500).send('Error fetching feed');
+  // }
+
+  const authorHandle = 'techservit.bsky.social'; // Replace with your handle
+    const identifier = process.env.BLUESKY_IDENTIFIER;
+    const password = process.env.BLUESKY_PASSWORD;
+  
+      // Log the identifier and password for debugging
+      console.log('Identifier:', identifier);
+      console.log('Password:', password);
+  
+      if (!identifier || !password) {
+        throw new Error('Identifier or password is missing. Check your .env file.');
+      }
+  
+      // Step 1: Login to get a session token
+      const loginResponse = await axios.post(`${BASE_URL}/com.atproto.server.createSession`, {
+        identifier,
+        password,
+      });
+  
+      const accessToken = loginResponse.data.accessJwt;
+
+    try {
+    //   // Fetch author feed
+    //   const response = await axios.get(`${BASE_URL}/app.bsky.feed.getAuthorFeed`, {
+    //     params: { actor: authorHandle },
+    //     headers: {
+    //                   Authorization: `Bearer ${accessToken}`,
+    //                 },
+    //   });
+    //   const feed = response.data.feed || []; // Extract posts from the feed
+    //   res.render(indexPath, { feed });
+    // Step 2: Fetch the user's feed
+      const feedResponse = await axios.get(`${BASE_URL}/app.bsky.feed.getAuthorFeed`, {
+        params: { actor: authorHandle },
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      });
+  
+      const feed = feedResponse.data.feed;
+  
+      // Render the feed using EJS
+      res.render(socials, { feed });
+      console.log(feed)
+    } catch (error) {
+      console.error('Error fetching feed:', error.response?.data || error.message);
+      res.status(500).send('Error fetching feed.');
+    }
 });
 
 // Render home page with blog list
@@ -170,10 +351,10 @@ app.post("/home", (req, res) => {
     timestamp: new Date().toLocaleDateString() +" "+ new Date().toLocaleTimeString()
   })
 
-  // Save the user to the database
+  // Save the post to the database
   newPost.save()
-  .then(() => console.log('User saved!'))
-  .catch((error) => console.log('Error saving user:', error));
+  .then(() => console.log('Post saved!'))
+  .catch((error) => console.log('Error saving Post:', error));
 
 });
 
@@ -248,12 +429,7 @@ app.post("/edit/:id", (req, res) => {
   });
 });
 
-// Function to generate random ID
-function generateID() {
-  return Math.floor(Math.random() * 10000);
-}
-
-// Start the server
+// Start the server-side application
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
   

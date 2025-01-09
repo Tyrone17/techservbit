@@ -1,26 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact Us</title>
+  <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>techservit - contact</title>
+    <link rel="stylesheet" href="/style.css" />
 </head>
 <body>
-  <h1>Contact Us</h1>
-  <form action="/send-email" method="POST">
-    <label for="name">Your Name and Surname:</label>
-    <input type="text" name="name" id="name" required>
-    <br>
-    <label for="email">Your Email:</label>
-    <input type="email" name="email" id="email" required>
-    <br>
-    <label for="number">Your WhatsApp/Telegram:</label>
-    <input type="number" name="number" id="number" required>
-    <br>
-    <label for="message">Your Request/Query:</label>
-    <textarea name="message" id="message" required></textarea>
-    <br>
-    <button type="submit">Send</button>
-  </form>
+  <div class="body-container">
+  <%- include('../public/partials/header.ejs') %>
+    <form action="/send-email" method="POST" class="form-container">
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="name">Your Name and Surname:</label>
+          <input type="text" name="name" id="name" required>
+        </div>
+        <br>
+        <div class="form-group col-md-6">
+          <label for="name">Your Email:</label>
+          <input type="email" name="email" id="email" required>
+        </div>
+        <br>
+        <div class="form-group col-md-4">
+          <label for="requestType">Request Type</label>
+          <select id="requestType" name="requestType">
+            <option selected>Choose...</option>
+            <option>Email hosting</option>
+            <option>Domain hosting</option>
+            <option>Domain management</option>
+            <option>Portfolio website</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <br>
+        <div class="form-group col-md-4">
+          <label for="numberType">My number works on:</label>
+          <select id="numberType" name="numberType">
+            <option selected>Choose...</option>
+            <option>WhatsApp</option>
+            <option>Telegram</option>
+          </select>
+        </div>
+        <br>
+        <div class="form-group col-md-2">
+          <label for="number">Number:</label>
+          <input type="number" name="number" id="number" required>
+      </div>
+      <br>
+      <div class="form-group col-md-2">
+      <br>
+      <label for="message">Your Request/Query:</label>
+      <textarea name="message" id="message" required></textarea>
+      <br>
+      </div>
+      <div class="form-group">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="gridCheck" name="checkbox">
+          <label class="form-check-label" for="gridCheck">
+            I am not a robot - and accept the <a class="a" href="/terms">T&Cs</a>
+          </label>
+        </div>
+        <br>
+      </div>
+      <button type="submit" class="btn btn-primary">Sign in</button>
+    </form>
+  </div>
+  <%- include('../public/partials/footer.ejs') %>
+  <script src="/main.js" type="text/javascript">
+       
+  </script>
+  
 </body>
 </html>

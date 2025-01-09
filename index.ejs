@@ -8,36 +8,29 @@
   </head>
   <body class="body-container">
     <%- include('public/partials/header.ejs') %>
-
-    <h1 class="title">T/A techservit</h1>
-    <h5 class="sub-title">Your digital solutions partner</h5>
-    <div class="form-container" id="aboutPage">
-      <section id="section1">
-        <h4>who we are</h4>
-        <div id="section1_div"></div>
-      </section>
-      
-      <section id="section3">
-        <h4>what we do</h4>
-        <div id="section3_div"></div>
-      </section>
-
-      <section id="section2">
-        <h4>why we do</h4>
-        <div id="section2_div"></div>
-      </section>
-
-    </div>
-    <!-- <section id="section4" class="home-container">
-      <h4>consider dynanic content (X feed)</h4>
-      <div id="section4_div"></div>
-    </section> -->
-    <!-- TODO: This footer does not behave correctly -->
-    <!-- <%- include('public/partials/footer.ejs') %> -->
-
-    <script src="/public/main.js">
-      
-    </script>
+    <div class="body-container">
+      <h1 class="title">T/A techservit</h1>
+      <h5 class="sub-title">technology at your service</h5>
+      <div class="container" id="aboutPage">
+        <section id="section1">
+          <h4>who we are</h4>
+          <div  class="index-li-a" id="section1_div"></div>
+        </section>
+        
+        <section id="section3">
+          <h4>what we do</h4>
+          <div  class="contact-info" id="section3_div"></div>
+        </section>
+  
+        <section id="section2">
+          <h4>why we do</h4>
+          <div  class="index-li-a" id="section2_div"></div>
+        </section>
+        </div>
+      </div>
+      <script src="/public/main.js">
+        
+      </script>
     <%- include('public/partials/footer.ejs') %>
   </body>
 </html>

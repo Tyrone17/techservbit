@@ -5,7 +5,7 @@ body {
 
 a {
   text-decoration: none;
-  color: #000;
+  color: #1e46d6;
 }
 
 .container {
@@ -338,6 +338,16 @@ input[type="submit"]:hover {
   background-color: #fff;
   color: black;
   font-weight: 600;
+}
+
+.index-li-a {
+  margin-bottom: 0.5rem;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fff;
+  color:black;
+  font-weight: 550;
 }
 
 .index-p {

@@ -15,7 +15,7 @@
         <main class="container">
             <!-- BlueSky Feed  -->
             <section class="contact-info">
-              <h3>BlueSky Feed</h3>
+              <!-- <h3>BlueSky Feed</h3> -->
               <% if (feed && feed.length) { %>
                 <ul>
                   <% feed.forEach((item, index) => { %>
@@ -23,7 +23,7 @@
                       <h3 class="feed-h3">Follow us on <em>BlueSky </em><a href="<%= 'https://bsky.app/profile/'+item.post.author.handle %>"> @<%= item.post.author.handle %></a></h3>
                       <p class="feed-p"><%= item.post.record.text %></p>
                     </li>
-                    <p>for more posts like this - served daily.</p>
+                    <p>for more posts like this - served daily (or weekly if we're busy, or monthly if we really busy:).</p>
                   <% }); %>
                 </ul>
               <% } else { %>
@@ -31,9 +31,9 @@
               <% } %>
             </section>
             <section class="contact-info">
-                <h3>Contact Information</h3>
+                <h3>How to reach us directly:</h3>
                 <ul>
-                  <li><strong>Email:</strong> <a href="mailto:info@techservit.co.za">info@techservit.co.za</a></li>
+                  <li><strong>Email:</strong> <a href="mailto:info@techservit.co.za">info@techservit.co.za</a></li> <p>or;</p>
                   <!-- <li><strong>Website:</strong> <a href="http://www.techservit.co.za" target="_blank">www.techservit.co.za</a></li> -->
                   <li><strong>Ticket Service:</strong></li>
                   <form action="/contact" method="get">

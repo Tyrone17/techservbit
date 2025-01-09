@@ -141,26 +141,45 @@ app.get("/contact", (req, res) => {
   res.render(contact);
 });
 
+// const transporter = nodemailer.createTransport({
+//   host: 'mail.techservit.co.za', // Your domain's mail server
+//   port: 587, // Port for STARTTLS
+//   secure: false, // Use true for port 465, false for 587
+//   auth: {
+//     user: 'info@techservit.co.za', // Your domain email address
+//     pass: 'your-email-password', // The password for the email account
+//   },
+//   tls: {
+//     rejectUnauthorized: false, // Allow self-signed certificates if necessary
+//   },
+// });
+
+
 // Create route to handle the email object
 app.post('/send-email', async (req, res) => {
-  const { name, email, number, message } = req.body;
+  const { name, email, number, message, requestType, numberType  } = req.body;
   const uid = generateID();
   try {
     // Set up nodemailer transport with your email service
-    const transporter = nodemailer.createTransport({
-      service: 'gmail', // Example for Gmail
-      auth: {
-        user: 'techserv20@gmail.com', // Replace with your email
-        pass: 'ubyl xzsl gxdv wvxn'  // Use an App Password if using Gmail
-      }
+      const transporter = nodemailer.createTransport({
+        host: '156.155.253.182', // Your domain's mail server
+        port: 587, // Port for STARTTLS
+        secure: false, // Use true for port 465, false for 587
+        auth: {
+          user: 'info', // Your domain email address
+          pass: 'tsbword', // The password for the email account
+        },
+        tls: {
+          rejectUnauthorized: false, // Allow self-signed certificates if necessary
+        },
     });
 
     // Set up email data
     const mailOptions = {
       from: email, // sender's email address (user's input) = techserv20@gmail.com
-      to: 'recipient_email@gmail.com', // recipient's email address = info@techservit.co.za (it creates the lead into new business)
+      to: 'info@techservit.co.za', // recipient's email address = info@techservit.co.za (it creates the lead into new business)
       subject: `New Customer Request - ${uid}`,
-      text: `You have received a new message:\n\nName: ${name}\nEmail: ${email}\nNumber: ${number}\nMessage: ${message}\nUID: ${uid}`
+      text: `You have received a new message:\n\nName: ${name}\nEmail: ${email}\n\nNumber_Type: ${numberType}\nNumber: ${number}\nRequest_Type: ${requestType}\nMessage: ${message}\nUID: ${uid}`
     };
 
     // Send the email
